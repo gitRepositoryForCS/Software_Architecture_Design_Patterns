@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>/Users/robby/Repositories/ksu-cis-501-assignments/Todo/.A1-Todo-Console.md.html</title>
+
+
+<style type="text/css">
+body {
+	color: #333;
+	font: 13px/1.4 Helvetica,arial,freesans,clean,sans-serif;
+}
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 15px;
+    line-height: 1.7;
+    word-wrap: break-word;
+}
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
+}
+.markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+}
+.markdown-body a.absent {
+    color: #C00;
+}
+.markdown-body a.anchor {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    margin-left: -30px;
+    padding-left: 30px;
+    padding-right: 6px;
+    position: absolute;
+    top: 0;
+}
+.markdown-body a.anchor:focus {
+    outline: medium none;
+}
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+    cursor: text;
+    font-weight: bold;
+    line-height: 1.7;
+    margin: 1em 0 15px;
+    padding: 0;
+    position: relative;
+}
+
+.markdown-body h1 .octicon-link, .markdown-body h2 .octicon-link, .markdown-body h3 .octicon-link, .markdown-body h4 .octicon-link, .markdown-body h5 .octicon-link, .markdown-body h6 .octicon-link {
+    color: #000;
+    display: none;
+}
+.markdown-body h1:hover a.anchor, .markdown-body h2:hover a.anchor, .markdown-body h3:hover a.anchor, .markdown-body h4:hover a.anchor, .markdown-body h5:hover a.anchor, .markdown-body h6:hover a.anchor {
+    line-height: 1;
+    margin-left: -22px;
+    padding-left: 0;
+    text-decoration: none;
+    top: 15%;
+}
+.markdown-body h1:hover a.anchor .octicon-link, .markdown-body h2:hover a.anchor .octicon-link, .markdown-body h3:hover a.anchor .octicon-link, .markdown-body h4:hover a.anchor .octicon-link, .markdown-body h5:hover a.anchor .octicon-link, .markdown-body h6:hover a.anchor .octicon-link {
+    display: inline-block;
+}
+.markdown-body h1 tt, .markdown-body h1 code, .markdown-body h2 tt, .markdown-body h2 code, .markdown-body h3 tt, .markdown-body h3 code, .markdown-body h4 tt, .markdown-body h4 code, .markdown-body h5 tt, .markdown-body h5 code, .markdown-body h6 tt, .markdown-body h6 code {
+    font-size: inherit;
+}
+.markdown-body h1 {
+    border-bottom: 1px solid #DDD;
+    font-size: 2.5em;
+}
+.markdown-body h2 {
+    border-bottom: 1px solid #EEE;
+    font-size: 2em;
+}
+.markdown-body h3 {
+    font-size: 1.5em;
+}
+.markdown-body h4 {
+    font-size: 1.2em;
+}
+.markdown-body h5 {
+    font-size: 1em;
+}
+.markdown-body h6 {
+    color: #777;
+    font-size: 1em;
+}
+.markdown-body p, .markdown-body blockquote, .markdown-body ul, .markdown-body ol, .markdown-body dl, .markdown-body table, .markdown-body pre {
+    margin: 15px 0;
+}
+.markdown-body hr {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC") repeat-x;
+    border: 0;
+    color: #CCC;
+    height: 4px;
+    margin: 15px 0;
+    padding: 0;
+}
+.markdown-body ul, .markdown-body ol {
+    padding-left: 30px;
+}
+.markdown-body ul.no-list, .markdown-body ol.no-list {
+    list-style-type: none;
+    padding: 0;
+}
+.markdown-body ul ul, .markdown-body ul ol, .markdown-body ol ol, .markdown-body ol ul {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.markdown-body dl {
+    padding: 0;
+}
+.markdown-body dl dt {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 0;
+}
+.markdown-body dl dd {
+    margin-bottom: 15px;
+    padding: 0 15px;
+}
+.markdown-body blockquote {
+    border-left: 4px solid #DDD;
+    color: #777;
+    padding: 0 15px;
+}
+.markdown-body blockquote > *:first-child {
+    margin-top: 0;
+}
+.markdown-body blockquote > *:last-child {
+    margin-bottom: 0;
+}
+.markdown-body table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+.markdown-body table th {
+    font-weight: bold;
+}
+.markdown-body table th, .markdown-body table td {
+    border: 1px solid #DDD;
+    padding: 6px 13px;
+}
+.markdown-body table tr {
+    background-color: #FFF;
+    border-top: 1px solid #CCC;
+}
+.markdown-body table tr:nth-child(2n) {
+    background-color: #F8F8F8;
+}
+.markdown-body img {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 100%;
+    border: 0px;
+}
+.markdown-body span.frame {
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.frame > span {
+    border: 1px solid #DDD;
+    display: block;
+    float: left;
+    margin: 13px 0 0;
+    overflow: hidden;
+    padding: 7px;
+    width: auto;
+}
+.markdown-body span.frame span img {
+    display: block;
+    float: left;
+}
+.markdown-body span.frame span span {
+    clear: both;
+    color: #333;
+    display: block;
+    padding: 5px 0 0;
+}
+.markdown-body span.align-center {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-center > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: center;
+}
+.markdown-body span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+.markdown-body span.align-right {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
+.markdown-body span.align-right > span {
+    display: block;
+    margin: 13px 0 0;
+    overflow: hidden;
+    text-align: right;
+}
+.markdown-body span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+.markdown-body span.float-left {
+    display: block;
+    float: left;
+    margin-right: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-left span {
+    margin: 13px 0 0;
+}
+.markdown-body span.float-right {
+    display: block;
+    float: right;
+    margin-left: 13px;
+    overflow: hidden;
+}
+.markdown-body span.float-right > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: right;
+}
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+.markdown-body code {
+    white-space: nowrap;
+}
+.markdown-body pre > code {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+}
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+.markdown-body pre code, .markdown-body pre tt {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+
+.highlight {
+    background: #FFF;
+}
+.highlight .k,
+.highlight .o,
+.highlight .cp,
+.highlight .cs,
+.highlight .gs,
+.highlight .gu,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .nc,
+.highlight .ne,
+.highlight .nf,
+.highlight .ow {
+    font-weight: bold;
+}
+.highlight .gd,
+.highlight .gd .x,
+.highlight .gi,
+.highlight .gi .x,
+.type-csharp .highlight .nf,
+.type-csharp .highlight .nn {
+    color: #000;
+}
+.highlight .c,
+.highlight .cm,
+.highlight .c1 {
+    color: #998;
+    font-style: italic;
+}
+.highlight .err {
+    background-color: #E3D2D2;
+    color: #A61717;
+}
+.highlight .cp,
+.highlight .cs {
+    color: #999;
+}
+.highlight .cs,
+.highlight .ge {
+    font-style: italic;
+}
+.highlight .gd {
+    background-color: #FDD;
+}
+.highlight .gd .x {
+    background-color: #FAA;
+}
+.highlight .gr,
+.highlight .gt {
+    color: #A00;
+}
+.highlight .gh {
+    color: #999;
+}
+.highlight .gi {
+    background-color: #DFD;
+}
+.highlight .gi .x {
+    background-color: #AFA;
+}
+.highlight .go {
+    color: #888;
+}
+.highlight .gp,
+.highlight .nn {
+    color: #555;
+}
+.highlight .gu,
+.highlight .ni {
+    color: #800080;
+}
+.highlight .kt {
+    color: #458;
+}
+.highlight .m {
+    color: #099;
+}
+.highlight .s {
+    color: #D14;
+}
+.highlight .n {
+    color: #333;
+}
+.highlight .na,
+.highlight .no,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+    color: #008080;
+}
+.highlight .nb {
+    color: #0086B3;
+}
+.highlight .nc {
+    color: #458;
+}
+.highlight .ne,
+.highlight .nf {
+    color: #900;
+}
+.highlight .nt {
+    color: #000080;
+}
+.highlight .w {
+    color: #BBB;
+}
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo {
+    color: #099;
+}
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .s1 {
+    color: #D14;
+}
+.highlight .sr {
+    color: #009926;
+}
+.highlight .ss {
+    color: #990073;
+}
+.highlight .bp {
+    color: #999;
+}
+.highlight .il {
+    color: #099;
+}
+.highlight .gc {
+    background-color: #EAF2F5;
+    color: #999;
+}
+.type-csharp .highlight .k,
+.type-csharp .highlight .kt {
+    color: #00F;
+}
+.type-csharp .highlight .nf {
+    font-weight: normal;
+}
+.type-csharp .highlight .nc {
+    color: #2B91AF;
+}
+.type-csharp .highlight .s,
+.type-csharp .highlight .sc {
+    color: #A31515;
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a name="user-content-assignment-1-to-do-list-console-app" class="anchor" href="..md.html#assignment-1-to-do-list-console-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assignment 1: To-do List Console App</h1> 
+<p><strong>Deadline: September 11, 2014, 11:59pm, US Central</strong></p> 
+<h2> <a name="user-content-tasks" class="anchor" href="..md.html#tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tasks</h2> 
+<p>In this first assignment, you are to develop a simple console app to manage a list of things to do; it is similar to the TodoMVC webapp at: <a href="http://todomvc.com">http://todomvc.com</a>.</p> 
+<p>That is, the <em>Todo</em> app <em>manages</em> a list of <em>entries</em>. Each entry consists of a textual <em>description</em> and a <em>status</em> of either <em>active</em> or <em>completed</em>. The app provides several <em>operations</em> to: (1) <em>add</em> a new entry, (2) to <em>edit</em> the description of previously entered entry, (3) to <em>toggle</em> the active/completed status of an entry, (4) <em>delete</em> an entry, and (5) <em>delete</em> completed entries. In addition, it can -- (6) <em>change</em> the app list <em>display mode</em> to display: (1) all entries, (2) only active entries, or (3) only completed entries.</p> 
+<p>Since this is a console app, it is menu-based instead of the interactive UI of TodoMVC. The menu system is best described using a running demo of the app input/output below (when the app is started, it displays an empty todo list, and :</p> 
+<pre><code>To Do
+=====
+No entry to display
+
+No active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 1
+Enter description (empty to cancel): Clone GitHub repo https://github.com/ksucis-501/coursework.git
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksucis-501/coursework.git
+
+1 active entry
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 1
+Enter description (empty to cancel): Download zip file for Assignment 1
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksucis-501/coursework.git
+2. Download zip file for Assignment 1
+
+2 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 1
+Enter description (empty to cancel): Uncompress the downloaded zip file and move it into the local coursework Git repo
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksucis-501/coursework.git
+2. Download zip file for Assignment 1
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 1
+Enter description (empty to cancel): Commit and push the assignment
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksucis-501/coursework.git
+2. Download zip file for Assignment 1
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+4. Commit and push the assignment
+
+4 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 1
+Enter description (empty to cancel): Work on the assigment and commit &amp; push; rinse and repeat
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksucis-501/coursework.git
+2. Download zip file for Assignment 1
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+4. Commit and push the assignment
+5. Work on the assigment and commit &amp; push; rinse and repeat
+
+5 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 2
+Enter entry number to edit (1..5; 0 to cancel): 1
+Enter a new description (empty to cancel):  Clone GitHub repo https://github.com/ksu-cis-501/&lt;username&gt;-coursework.git
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksu-cis-501/&lt;username&gt;-coursework.git
+2. Download zip file for Assignment 1
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+4. Commit and push the assignment
+5. Work on the assigment and commit &amp; push; rinse and repeat
+
+5 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 3
+Enter entry number to toggle (1..5; 0 to cancel): 1
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksu-cis-501/&lt;username&gt;-coursework.git (completed)
+2. Download zip file for Assignment 1
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+4. Commit and push the assignment
+5. Work on the assigment and commit &amp; push; rinse and repeat
+
+4 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 3
+Enter entry number to toggle (1..5; 0 to cancel): 2
+
+To Do
+=====
+1. Clone GitHub repo https://github.com/ksu-cis-501/&lt;username&gt;-coursework.git (completed)
+2. Download zip file for Assignment 1 (completed)
+3. Uncompress the downloaded zip file and move it into the local coursework Git repo
+4. Commit and push the assignment
+5. Work on the assigment and commit &amp; push; rinse and repeat
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 4
+Enter entry number to delete (1..5; 0 to cancel): 1
+
+To Do
+=====
+1. Download zip file for Assignment 1 (completed)
+2. Uncompress the downloaded zip file and move it into the local coursework Git repo
+3. Commit and push the assignment
+4. Work on the assigment and commit &amp; push; rinse and repeat
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 6
+
+View Mode
+---------
+1. Show all entries
+2. Show active entries only
+3. Show completed entries only
+
+Enter selection (1..3): 1
+
+To Do
+=====
+1. Download zip file for Assignment 1 (completed)
+2. Uncompress the downloaded zip file and move it into the local coursework Git repo
+3. Commit and push the assignment
+4. Work on the assigment and commit &amp; push; rinse and repeat
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 6
+
+View Mode
+---------
+1. Show all entries
+2. Show active entries only
+3. Show completed entries only
+
+Enter selection (1..3): 2
+
+Active Entries
+==============
+1. Uncompress the downloaded zip file and move it into the local coursework Git repo
+2. Commit and push the assignment
+3. Work on the assigment and commit &amp; push; rinse and repeat
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 6
+
+View Mode
+---------
+1. Show all entries
+2. Show active entries only
+3. Show completed entries only
+
+Enter selection (1..3): 3
+
+Completed Entries
+=================
+1. Download zip file for Assignment 1
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 5
+Are you sure you want to delete all completed entries (type 'yes' to confirm)? yes
+
+Completed Entries
+=================
+No entry to display
+
+3 active entries
+
+Menu
+----
+1. Add Entry
+2. Edit Entry Description
+3. Toggle Entry Status
+4. Delete Entry
+5. Delete Completed Entries
+6. Set View Mode
+7. Exit
+
+Enter selection (1..7): 7
+
+Good bye!
+</code></pre> 
+<p>Your tasks for this assignments are to:</p> 
+<ol> 
+ <li> <p>implement the above menu-based Todo console app.</p> <p><strong>Important</strong>: You should put comments at each class and method, even a group of statements to help us understand your implementation (see the <code>TodoConsoleTest.test</code> method for example). </p> </li> 
+ <li><p>develop automated app tests that reach <strong>100%</strong> coverage of the app code; see the course notes on <a href="http://softwarearch.santoslab.org/01-tooling/index.html#app-testing">(console) app testing</a> (the tests for the course note prime tool example reach 100% coverage). For most tests, you should have the expected output similar to the prime tool tests; note that you should be careful with white-spaces when entering your expected output. You can first run the tests without an expected output (e.g., <code>null</code>), once you inspect the output manually, you can copy and paste the test output to become the expected output. The tests are useful for detecting regression in your code when you modify the code later on (this is called <em>regression testing</em>).</p></li> 
+</ol>
+<p><strong>Important</strong>: for each operation and sub-operation, you should define one test. For example, based on the menu system illustrated above, there should be 1 test defined to exercise adding a new entry; in addition, the app allows user to cancel entry addition by entering an &quot;empty&quot; input for the entry description, thus, 1 test should be defined to illustrate this scenario. Note that your max score for this assignment is capped by the amount of test coverage that you achieve. That is, if the assignment is worth 10 points and your tests cover only, for example, 80% coverage, then, your max score is 8 out of 10. The model solution achieves 100% coverage using 15 test scripts (and those are not the minimal set); this gives an idea on the amount of efforts that you should expect to spend.</p> 
+<p>The provided Visual Studio solution consists of two projects: (1) <code>Todo-Console</code>, and (2) <code>Todo-Console-Tests</code> as starting point for the two tasks above (respectively).</p> 
+<p><strong>Note:</strong> If you have specific programming questions, we are happy to answer them. However, try Googling or searching for answers at <a href="http://stackoverflow.com">http://stackoverflow.com</a>,<br /><a href="http://msdn.microsoft.com">http://msdn.microsoft.com</a>, and <a href="http://www.dotnetperls.com">http://www.dotnetperls.com</a> first because it is highly likely that people have asked similar questions in the past. This helps you to make progress without waiting for us to respond to your questions (or even waiting to set up an appointment first). If you send us a question, we will actually try Googling your question first and see if it turns out with some acceptable answers that we believe you should understand; if so, we will send you the links (and then setup an appointment if you still need more help). This is how people in the industry (and the instructor) work with their peers (i.e., by leveraging online resources for self-learning first and then resort to asking for help from colleagues).</p> 
+<h2> <a name="user-content-submission" class="anchor" href="..md.html#submission" aria-hidden="true"><span class="octicon octicon-link"></span></a>Submission</h2> 
+<p>To submit, copy the folder containing this file to your local GitHub repository for the course, and then commit and push your modified solutions to GitHub by the deadline (see the<br /><a href="http://softwarearch.santoslab.org/01-tooling/index.html#git-github">course note on Git/GitHub</a>).</p>
+</body>
+</html>

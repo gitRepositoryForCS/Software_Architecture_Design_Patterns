@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="fe173374-105f-4c3e-ba1e-8026411fa103" name="todo" linkedPackageId="956c5399-6760-45bb-a0db-90d4b20e55b7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="c591408b-66eb-4f47-87ac-0ef373dc6c72">
+      <profileInstance Id="c574ce19-0237-458c-8373-0d7a6c41aa6e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="6a896391-531f-42cc-8597-8f9e823de651">
+      <profileInstance Id="7f56ddeb-8171-4ba3-9b75-fe15b4004325" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8ae7089d-f1e5-430a-ad6f-0d8dbfc7e17d" name="UserInterface" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="18b1fd76-ae3d-4f23-90d8-16205b57c348" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="edf07011-7ce0-4815-9c7a-f3d9f7bc39fa" name="TodoController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d4d97c8a-91a4-4007-ad7d-bce6e5409e7a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="26ccc1eb-3058-42df-8548-f49ac8372c12" name="Interface1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="13a41ece-4c36-430d-801a-d5b8ff909ccb" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4469800d-5670-48ec-86c6-3841770a20a3" name="Entry" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3f46a5c5-0a4d-4c8e-b8ae-60842a1ba862" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="956c5399-6760-45bb-a0db-90d4b20e55b7" name="Todo-Model">
+    <elementDefinition Id="9c378a2b-43f5-41a7-a03b-0aa8e63d4ca2" />
+  </package>
+</logicalClassDesignerModel>
